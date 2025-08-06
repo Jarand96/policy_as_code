@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
+  "nodeName": "/root",
+  "definitionEntry": {
+    "policySetName": "MCSB_to_CIS_Controls",
+    "displayName": "Audit CIS Controls compliance using MCSB Policies"
+  },
+  "assignment": {
+    "name": "Audit CIS Controls compliance using MCSB Policies",
+    "displayName": "Audit CIS Controls compliance using MCSB Policies",
+    "description": ""
+  },
+  "scope": {
+    "EPAC-PROD": [
+      "/subscriptions/5f91c223-6084-4a11-985e-e152618a415b"
+    ],
+    "EPAC-DEV": [
+      "/subscriptions/41566279-17a3-43ac-8109-b84d64c819d2"
+    ]
+  },
+  "definitionVersion": "1.*.*"
+}
