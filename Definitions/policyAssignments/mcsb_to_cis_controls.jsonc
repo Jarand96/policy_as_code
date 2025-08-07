@@ -11,10 +11,10 @@
     "description": ""
   },
   "scope": {
-    "EPAC-PROD": [
+    "tenant": [
       "/subscriptions/5f91c223-6084-4a11-985e-e152618a415b"
     ],
-    "EPAC-DEV": [
+    "epac-dev": [
       "/subscriptions/41566279-17a3-43ac-8109-b84d64c819d2"
     ]
   },
