@@ -1,0 +1,30 @@
+{
+  "mode": "All",
+  "policyRule": {
+    "if": {
+      "allOf": [
+        {
+          "field": "type",
+          "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+        },
+        {
+          "field": "[concat('tags[', parameters('tagName'), ']')]",
+          "exists": "false"
+        }
+      ]
+    },
+    "then": {
+      "effect": "audit"
+    }
+  },
+  "parameters": {
+    "tagName": {
+      "type": "String",
+      "metadata": {
+        "displayName": "Tag Name",
+        "description": "Name of the tag to audit for on the resource group (e.g., 'costCenter')."
+      },
+      "defaultValue": "costCenter"
+    }
+  }
+}
