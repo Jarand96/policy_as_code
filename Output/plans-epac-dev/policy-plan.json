@@ -1,57 +1,79 @@
 {
-  "exemptions": {
-    "numberOfChanges": 0,
-    "update": {},
-    "numberOfOrphans": 0,
-    "new": {},
-    "delete": {},
-    "numberUnchanged": 0,
-    "numberOfExpired": 0,
-    "replace": {}
-  },
-  "policySetDefinitions": {
-    "delete": {},
-    "numberUnchanged": 1,
-    "replace": {},
-    "new": {},
-    "numberOfChanges": 0,
-    "update": {}
-  },
   "policyDefinitions": {
-    "delete": {},
-    "numberUnchanged": 0,
+    "numberOfChanges": 1,
+    "update": {},
     "replace": {},
-    "new": {},
-    "numberOfChanges": 0,
-    "update": {}
-  },
-  "assignments": {
-    "delete": {},
     "numberUnchanged": 0,
-    "replace": {},
     "new": {
-      "/subscriptions/41566279-17a3-43ac-8109-b84d64c819d2/providers/Microsoft.Authorization/policyAssignments/Audit CIS Controls compliance using MCSB Policies": {
+      "/subscriptions/41566279-17a3-43ac-8109-b84d64c819d2/providers/Microsoft.Authorization/policyDefinitions/audit-resourcegroup-tags": {
+        "description": "This policy audits resource groups to ensure they have a specific tag, such as 'costCenter'.",
+        "id": "/subscriptions/41566279-17a3-43ac-8109-b84d64c819d2/providers/Microsoft.Authorization/policyDefinitions/audit-resourcegroup-tags",
+        "parameters": {
+          "tagName": {
+            "type": "String",
+            "metadata": {
+              "displayName": "Tag Name",
+              "description": "Name of the tag to audit for on the resource group (e.g., 'costCenter')."
+            },
+            "defaultValue": "Department"
+          }
+        },
         "metadata": {
-          "assignedBy": "epac/bd715eb8-36d2-4d33-8db0-505e04c0e4aa/EPAC-DEV",
+          "deployedBy": "epac/bd715eb8-36d2-4d33-8db0-505e04c0e4aa/EPAC-DEV",
           "pacOwnerId": "bd715eb8-36d2-4d33-8db0-505e04c0e4aa"
         },
-        "definitionVersion": "1.*.*",
-        "displayName": "Audit CIS Controls compliance using MCSB Policies",
-        "identity": {
-          "type": "None"
+        "name": "audit-resourcegroup-tags",
+        "policyRule": {
+          "if": {
+            "allOf": [
+              {
+                "field": "type",
+                "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+              },
+              {
+                "field": "[concat('tags[', parameters('tagName'), ']')]",
+                "exists": "false"
+              }
+            ]
+          },
+          "then": {
+            "effect": "audit"
+          }
         },
-        "enforcementMode": "Default",
-        "identityRequired": false,
-        "policyDefinitionId": "/subscriptions/41566279-17a3-43ac-8109-b84d64c819d2/providers/Microsoft.Authorization/policySetDefinitions/MCSB_to_CIS_Controls",
-        "name": "Audit CIS Controls compliance using MCSB Policies",
-        "id": "/subscriptions/41566279-17a3-43ac-8109-b84d64c819d2/providers/Microsoft.Authorization/policyAssignments/Audit CIS Controls compliance using MCSB Policies",
-        "scope": "/subscriptions/41566279-17a3-43ac-8109-b84d64c819d2",
-        "notScopes": []
+        "version": null,
+        "scopeId": "/subscriptions/41566279-17a3-43ac-8109-b84d64c819d2",
+        "mode": "All",
+        "displayName": "Audit for a specific tag on resource groups"
       }
     },
-    "numberOfChanges": 1,
-    "update": {}
+    "delete": {}
   },
-  "createdOn": "2025-08-05 10:27:21Z",
-  "pacOwnerId": "bd715eb8-36d2-4d33-8db0-505e04c0e4aa"
+  "policySetDefinitions": {
+    "numberOfChanges": 0,
+    "update": {},
+    "replace": {},
+    "numberUnchanged": 1,
+    "new": {},
+    "delete": {}
+  },
+  "createdOn": "2025-08-07 07:39:37Z",
+  "pacOwnerId": "bd715eb8-36d2-4d33-8db0-505e04c0e4aa",
+  "assignments": {
+    "numberOfChanges": 0,
+    "update": {},
+    "replace": {},
+    "numberUnchanged": 1,
+    "new": {},
+    "delete": {}
+  },
+  "exemptions": {
+    "numberUnchanged": 0,
+    "delete": {},
+    "numberOfChanges": 0,
+    "replace": {},
+    "numberOfOrphans": 0,
+    "new": {},
+    "numberOfExpired": 0,
+    "update": {}
+  }
 }
