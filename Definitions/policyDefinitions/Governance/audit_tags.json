@@ -1,30 +1,36 @@
 {
-  "mode": "All",
-  "policyRule": {
-    "if": {
-      "allOf": [
-        {
-          "field": "type",
-          "equals": "Microsoft.Resources/subscriptions/resourceGroups"
-        },
-        {
-          "field": "[concat('tags[', parameters('tagName'), ']')]",
-          "exists": "false"
-        }
-      ]
-    },
-    "then": {
-      "effect": "audit"
-    }
-  },
-  "parameters": {
-    "tagName": {
-      "type": "String",
-      "metadata": {
-        "displayName": "Tag Name",
-        "description": "Name of the tag to audit for on the resource group (e.g., 'costCenter')."
+  "name": "audit-resourcegroup-tags",
+  "type": "Microsoft.Authorization/policyDefinitions",
+  "properties": {
+    "displayName": "Audit for a specific tag on resource groups",
+    "description": "This policy audits resource groups to ensure they have a specific tag, such as 'costCenter'.",
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+          },
+          {
+            "field": "[concat('tags[', parameters('tagName'), ']')]",
+            "exists": "false"
+          }
+        ]
       },
-      "defaultValue": "costCenter"
+      "then": {
+        "effect": "audit"
+      }
+    },
+    "parameters": {
+      "tagName": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Tag Name",
+          "description": "Name of the tag to audit for on the resource group (e.g., 'costCenter')."
+        },
+        "defaultValue": "costCenter"
+      }
     }
   }
 }

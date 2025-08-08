@@ -1,0 +1,16 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-exemption-schema.json",
+    "exemptions": [
+        {
+            "name": "resourcegroup-with-no-tags",
+            "displayName": "This resource is exempt from policy",
+            "description": "This resource does not have any tags and is exempt from the tag policy.",
+            "exemptionCategory": "Waiver",
+            "expiresOn": "",
+            "scopes": [
+               "/subscriptions/41566279-17a3-43ac-8109-b84d64c819d2/resourceGroups/Jarandlabs"
+            ],
+            "policyDefinitionName": "audit-resourcegroup-tags"
+        }
+    ]
+}

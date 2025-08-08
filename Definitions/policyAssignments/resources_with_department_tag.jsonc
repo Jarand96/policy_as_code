@@ -2,12 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-assignment-schema.json",
   "nodeName": "/root",
   "definitionEntry": {
-    "policySetName": "MCSB_to_CIS_Controls",
-    "displayName": "Audit CIS Controls compliance using MCSB Policies"
+    "policyName": "audit-resourcegroup-tags",
+    "displayName": "Audit for a specific tag on resource groups"
   },
   "assignment": {
-    "name": "Audit CIS Controls compliance using MCSB Policies",
-    "displayName": "Audit CIS Controls compliance using MCSB Policies",
+    "name": "audit-resourcegroup-tags",
+    "displayName": "Audit for department tag on resource groups",
     "description": ""
   },
   "scope": {
