@@ -1,12 +1,9 @@
-# This pipeline is used to deploy Policies, Initiative definitions and Assignments into Azure.
-name: EPAC Tenant Workflow
+name: EPAC Tenant Deploy
 
 on:
-  pull_request:
+  push:
     branches:
       - main
-    types:
-      - closed
     paths:
       - 'Definitions/**'
 
@@ -32,7 +29,7 @@ jobs:
   deployPolicy:
     name: Deploy tenant Policy Changes
     needs: plan
-    if: needs.plan.outputs.deployPolicyChanges == 'yes' && github.ref == 'refs/heads/main'
+    if: needs.plan.outputs.deployPolicyChanges == 'yes'
     uses: ./.github/workflows/deploy-policy.yml
     with:
       pacEnvironmentSelector: tenant
@@ -44,7 +41,7 @@ jobs:
   deployRoles:
     name: Deploy tenant Role Changes
     needs: plan
-    if: needs.plan.outputs.deployRoleChanges == 'yes' && github.ref == 'refs/heads/main'
+    if: needs.plan.outputs.deployRoleChanges == 'yes'
     uses: ./.github/workflows/deploy-roles.yml
     with:
       pacEnvironmentSelector: tenant
